@@ -1,0 +1,5 @@
+<%= cl_image_tag @product.photo.key, width: 400, height: 300, crop: :fill  %>
+<h2><%= @product.name %></h2>
+<p><%= @product.description %></p>
+<p><%= @product.product_type %></p>
+<p>R$<%= @product.price.to_i %></p>
