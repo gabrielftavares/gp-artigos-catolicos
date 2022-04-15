@@ -1,9 +1,9 @@
 <h2>Adicione um novo produto</h2>
 
-<%= simple_form_for (@product) do |f|%>
+<%= simple_form_for [@product] do |f|%>
   <%= f.input :name, label: 'Nome' %>
   <%= f.input :description, label: 'Descrição' %>
-  <%= f.input :product_type, label: 'Tipo' , collection: ['Terço', 'Pulseira', 'Chaveiro', 'Agenda'] %>
+  <%= f.association :category, label: 'Tipo' , collection: Category.all %>
   <%= f.input :price, label: 'Preço' %>
   <%= f.input :photo, as: :file, label: 'Imagem' %>
   <%= f.submit%>

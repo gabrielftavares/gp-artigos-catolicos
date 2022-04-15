@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   has_one_attached :photo
+  belongs_to :category
 
-  validates :name, :description, :product_type, :price, presence: true
-  validates :product_type, inclusion: { in: %w[Terço Pulseira Chaveiro Agenda] }
+  validates :name, :description, :category, :price, :photo, presence: true
 end
