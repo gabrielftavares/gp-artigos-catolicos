@@ -4,4 +4,11 @@
   <p><%= @product.description %></p>
   <p><%= @product.category.name %></p>
   <p>R$<%= @product.price.to_i %></p>
+
+  <% if user_signed_in? && current_user.admin%>
+    <%= link_to 'Editar', edit_product_path %> |
+    <%= link_to 'Apagar', product_path,
+                          method: :delete,
+                          data: { confirm: "Tem certeza?" } %>
+  <% end %>
 </div>
