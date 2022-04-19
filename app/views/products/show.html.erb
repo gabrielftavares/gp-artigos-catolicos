@@ -1,5 +1,4 @@
 <div class="container mt-5">
-
   <div class="product-grid">
     <div class="product-image">
       <div class="links mb-3">
@@ -10,38 +9,20 @@
       <%= cl_image_tag @product.photo.key %>
     </div>
     <div class="product-info">
-      <h2><%= @product.name %></h2>
-      <p>R$<%= @product.price.to_i %>,00</p>
-      <p><%= @product.description %></p>
+      <div class="text-area">
+        <h2><%= @product.name %></h2>
+        <p>R$<%= @product.price.to_i %>,00</p>
+        <p><%= @product.description %></p>
+      </div>
+        <% if user_signed_in? && current_user.admin%>
+          <div class="editable-links">
+            <%= link_to 'Editar', edit_product_path %> |
+            <%= link_to 'Apagar', product_path,
+                                  method: :delete,
+                                  data: { confirm: "Tem certeza?" } %>
+          </div>
+        <% end %>
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-  <%= cl_image_tag @product.photo.key, width: 400, height: 300, crop: :fill  %>
-  <h2><%= @product.name %></h2>
-  <p><%= @product.description %></p>
-  <p><%= @product.category.name %></p>
-  <p>R$<%= @product.price.to_i %></p>
-
-  <% if user_signed_in? && current_user.admin%>
-    <%= link_to 'Editar', edit_product_path %> |
-    <%= link_to 'Apagar', product_path,
-                          method: :delete,
-                          data: { confirm: "Tem certeza?" } %>
-  <% end %>
--->
 </div>

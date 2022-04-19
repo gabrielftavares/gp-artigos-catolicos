@@ -7,7 +7,14 @@
     font-size: 1.25rem;
   }
   a {
-    color: rgb(109, 109, 109);
+    color: #6d6d6d;
     text-decoration: none;
+  }
+
+  .product-info {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 }
