@@ -1,4 +1,36 @@
 <div class="container mt-5">
+
+  <div class="product-grid">
+    <div class="product-image">
+      <div class="links mb-3">
+        <%= link_to "Página Principal", "/" %> /
+        <%= link_to "Produtos", "/products" %> /
+        <%= link_to @product.category.name, "#", style: "pointer-events: none; cursor: default;" %>
+      </div>
+      <%= cl_image_tag @product.photo.key %>
+    </div>
+    <div class="product-info">
+      <h2><%= @product.name %></h2>
+      <p>R$<%= @product.price.to_i %>,00</p>
+      <p><%= @product.description %></p>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
   <%= cl_image_tag @product.photo.key, width: 400, height: 300, crop: :fill  %>
   <h2><%= @product.name %></h2>
   <p><%= @product.description %></p>
@@ -11,4 +43,5 @@
                           method: :delete,
                           data: { confirm: "Tem certeza?" } %>
   <% end %>
+-->
 </div>

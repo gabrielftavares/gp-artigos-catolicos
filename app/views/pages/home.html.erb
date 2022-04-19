@@ -1,9 +1,11 @@
 <%= render "shared/banner" %>
 
-<div class="container mt-5">
-  <h2> Nossos produtos: </h2>
+<div class="container background-cards my-5">
+  <h2> Nossos produtos</h2>
 
-  <div class="cards my-3">
+  <div class="cards mt-3">
     <%= render 'shared/card', products: @products %>
   </div>
 </div>
+
+<%= render "shared/footer" %>

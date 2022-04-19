@@ -1,0 +1,13 @@
+.product-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  p {
+    font-size: 1.25rem;
+  }
+  a {
+    color: rgb(109, 109, 109);
+    text-decoration: none;
+  }
+}
