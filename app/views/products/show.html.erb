@@ -1,31 +1,66 @@
-<div class="container mt-5">
-  <div class="product-grid">
-    <div class="row">
-      <div class="links mb-3">
-        <%= link_to "Página Principal", "/" %> /
-        <%= link_to "Produtos", "/products" %> /
-        <%= link_to @product.category.name, "#", style: "pointer-events: none; cursor: default;" %>
-      </div>
-      <div class="product-image col-12 col-md-8 col-lg-6">
-        <%= cl_image_tag @product.photo.key %>
-      </div>
+<div class="container">
 
-      <div class="product-info col-12 col-md-4 col-lg-6">
-        <div class="text-area">
-          <h2><%= @product.name %></h2>
-          <p>R$<%= @product.price.to_i %>,00</p>
-          <p><%= @product.description %></p>
+    <div class="product-card mb-5">
+      <div class="row">
+        <div class="second-nav my-4">
+          <%= link_to "Página Principal", "/" %> /
+          <%= link_to "Produtos", "/products" %> /
+          <%= link_to @product.category.name, "#", style: "pointer-events: none; cursor: default;" %>
         </div>
-          <% if user_signed_in? && current_user.admin%>
-            <div class="editable-links">
-              <%= link_to 'Editar', edit_product_path %> |
-              <%= link_to 'Apagar', product_path,
-                                    method: :delete,
-                                    data: { confirm: "Tem certeza?" } %>
-            </div>
-          <% end %>
+        <div class="column col-md-12 col-lg-6">
+          <%= cl_image_tag @product.photo.key %>
+        </div>
+        <div class="col-md-12 col-lg-6 details my-3">
+          <h3><%= @product.name %></h3>
+          <p><%= @product.description %></p>
+          <h5>R$<%= @product.price.to_i %>,00</h5>
+        </div>
       </div>
     </div>
-  </div>
 
+  <div class="suggestions">
+    <h4>Você também pode se interessar:</h4>
+    <div class="cards my-4">
+      <% @randoms.each do |item| %>
+        <%= link_to item do %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= item.photo.url%>)">
+            <%= item.name %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+<!--
+<div class="container mt-5">
+  <div class="product-area">
+    <div class="links mb-3">
+      <%= link_to "Página Principal", "/" %> /
+      <%= link_to "Produtos", "/products" %> /
+      <%= link_to @product.category.name, "#", style: "pointer-events: none; cursor: default;" %>
+    </div>
+      <div class="product-grid">
+        <div class="product-image">
+          <%= cl_image_tag @product.photo.key, width: 350, height: 350, crop:"fill" %>
+        </div>
+
+        <div class="product-info">
+          <div class="text-area">
+            <h2><%= @product.name %></h2>
+            <p>R$<%= @product.price.to_i %>,00</p>
+            <p><%= @product.description %></p>
+          </div>
+            <% if user_signed_in? && current_user.admin%>
+              <div class="editable-links">
+                <%= link_to 'Editar', edit_product_path %> |
+                <%= link_to 'Apagar', product_path,
+                                      method: :delete,
+                                      data: { confirm: "Tem certeza?" } %>
+              </div>
+            <% end %>
+        </div>
+    </div>
+  </div>
+</div>
+-->

@@ -7,7 +7,9 @@ class ProductsController < ApplicationController
     @categories = Category.all
   end
 
-  def show; end
+  def show
+    @randoms = Product.order(Arel.sql('RANDOM()')).first(4)
+  end
 
   def new
     @product = Product.new
