@@ -1,22 +1,36 @@
 <div class="container">
-
-    <div class="product-card mb-5">
-      <div class="row">
-        <div class="second-nav my-4">
+  <div class="row justify-content-start product-card mb-3">
+    <!-- FIRST COLUMN -->
+    <div class="col-sm-12 col-md-6 col-lg-5 col-xl-4">
+      <div class="image-column">
+        <div class="second-nav mt-3">
           <%= link_to "Página Principal", "/" %> /
           <%= link_to "Produtos", "/products" %> /
           <%= link_to @product.category.name, "#", style: "pointer-events: none; cursor: default;" %>
         </div>
-        <div class="column col-md-12 col-lg-6">
-          <%= cl_image_tag @product.photo.key %>
-        </div>
-        <div class="col-md-12 col-lg-6 details my-3">
-          <h3><%= @product.name %></h3>
-          <p><%= @product.description %></p>
-          <h5>R$<%= @product.price.to_i %>,00</h5>
+        <div class="product-image mt-3">
+          <%= cl_image_tag @product.photo.key, width: 340, height: 340, crop:"fill" %>
         </div>
       </div>
     </div>
+
+    <!-- SECOND COLUMN -->
+    <div class="pt-3 pt-sm-3 col-sm-12 col-md-6 col-lg-5 col-xl-4 align-self-center">
+      <div class="text-area">
+        <h2><%= @product.name %></h2>
+        <p>R$<%= @product.price.to_i %>,00</p>
+        <p><%= @product.description %></p>
+      </div>
+      <% if user_signed_in? && current_user.admin%>
+        <div class="editable-links">
+          <%= link_to 'Editar', edit_product_path %> |
+          <%= link_to 'Apagar', product_path,
+                                method: :delete,
+                                data: { confirm: "Tem certeza?" } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
   <div class="suggestions">
     <h4>Você também pode se interessar:</h4>
